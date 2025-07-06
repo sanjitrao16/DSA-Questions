@@ -29,5 +29,5 @@ bin/
 .DS_Store
 
 ### Folders ###
-.idea/
+idea/
 DSA_Reboot.iml

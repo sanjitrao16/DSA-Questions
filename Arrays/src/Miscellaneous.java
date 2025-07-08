@@ -12,7 +12,10 @@ public class Miscellaneous {
 
 //        int[] arr3 = {10, 5, 2, 7, 1, -10};
         int[] arr3 = {2,0,0,3};
-        System.out.println(longestSubarrayWithSum(arr3,3));
+//        System.out.println(longestSubarrayWithSum(arr3,3));
+
+        int[] arr4 = {10, 22, 12, 3, 0, 6};
+        System.out.println(leadersOfArrayOptimized(arr4));
     }
 
     // 1. Union of two sorted arrays
@@ -145,5 +148,57 @@ public class Miscellaneous {
         }
 
         return length;
+    }
+
+    // Leaders of the Array
+    /*
+    *
+    * Are elements where the element is greater than all the elements to its RHS.
+    *
+    *
+    * Brute-Force Approach
+    *
+    * TC - O(n*(n-1)) => O(n^2)
+    * SC - O(n)
+    *
+    * */
+    static ArrayList<Integer> leadersOfArray(int[] arr) {
+        ArrayList<Integer> leaders = new ArrayList<>();
+        boolean flag = false;
+
+        for (int i = 0;i<arr.length;i++) {
+            flag = true;
+            for (int j = i+1;j<arr.length;j++) {
+                if (!(arr[i] > arr[j])) flag = false;
+            }
+
+            if (flag) {
+                leaders.add(arr[i]);
+            }
+        }
+
+        return leaders;
+    }
+
+    // Leaders of the array - Optimized Approach
+    /*
+    *
+    *
+    * */
+    static ArrayList<Integer> leadersOfArrayOptimized(int[] arr) {
+        ArrayList<Integer> leaders = new ArrayList<>();
+        int n = arr.length;
+
+        int max = arr[n-1];
+        leaders.add(max);
+
+        for (int i = n-2;i>=0;i--) {
+            if (arr[i] > max) {
+                leaders.add(arr[i]);
+                max = arr[i];
+            }
+        }
+
+        return leaders;
     }
 }

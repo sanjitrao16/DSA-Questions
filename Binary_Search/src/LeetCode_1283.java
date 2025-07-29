@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class LeetCode_1283 {
     public static void main(String[] args) {
-        int[] nums = {44,22,33,11,1};
-        int threshold = 5;
+        int[] nums = {200,100,14};
+        int threshold = 10;
 
         System.out.println(smallestDivisor(nums,threshold));
     }
@@ -13,7 +13,7 @@ public class LeetCode_1283 {
     static int smallestDivisor(int[] nums, int threshold) {
         // Sort the given array
         Arrays.sort(nums);
-        int start = nums[0];
+        int start = 1;
         int end = nums[nums.length-1];
         int smallest = end;
 
@@ -26,17 +26,13 @@ public class LeetCode_1283 {
                 divSum += (int) Math.ceil((float) num/mid);
             }
 
-            if (divSum == threshold) {
-                return mid;
+            if (divSum <= threshold) {
+                smallest = Math.min(smallest,mid);
+                end = mid-1;
             }
 
             else if (divSum > threshold) {
                 start = mid+1;
-            }
-
-            else {
-                smallest = Math.min(smallest,mid);
-                end = mid-1;
             }
         }
 

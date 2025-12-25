@@ -37,7 +37,7 @@ public class LeetCode_94 {
     }
     // Time Complexity -> O(N) , Space Complexity -> O(N)
 
-    static List<Integer> inorderTraverse(TreeNode root,List<Integer> traversedList) {
+    private static List<Integer> inorderTraverse(TreeNode root,List<Integer> traversedList) {
         if (root == null) return null;
 
         inorderTraverse(root.left,traversedList);

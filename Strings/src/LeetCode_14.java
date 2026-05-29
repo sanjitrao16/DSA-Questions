@@ -1,18 +1,17 @@
-import java.util.Arrays;
-import java.util.Set;
+import java.util.*;
 import java.lang.StringBuilder;
-import java.util.LinkedHashSet;
 
 public class LeetCode_14 {
     public static void main(String[] args) {
-        String[] strs = {"reflower","flow","flight"};
+//        String[] strs = {"flower","flow","flight"};
+        String[] strs = {"aa","aa"};
         System.out.println(longestCommonPrefix(strs));
     }
 
     static String longestCommonPrefix(String[] strs) {
         if (strs.length == 1) return strs[0];
 
-        Set<Character> charSet = new LinkedHashSet<>();
+        Set<Character> charSet = new HashSet<>();
         Arrays.sort(strs);
         String first = strs[0];
 
@@ -34,7 +33,7 @@ public class LeetCode_14 {
     }
 
     static Set<Character> helperFunction(String str,Set<Character> set) {
-        Set<Character> result = new LinkedHashSet<>();
+        Set<Character> result = new HashSet<>();
         for (char c: str.toCharArray()) {
             if (set.contains(c)) {
                 result.add(c);

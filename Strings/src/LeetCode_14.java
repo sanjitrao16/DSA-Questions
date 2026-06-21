@@ -1,6 +1,4 @@
-import java.util.*;
-import java.lang.StringBuilder;
-
+// Longest Common Prefix String
 public class LeetCode_14 {
     public static void main(String[] args) {
         String[] strs = {"flower","","flight"};

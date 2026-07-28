@@ -1,7 +1,8 @@
 // Sort Characters by frequency
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class LeetCode_451 {
     public static void main(String[] args) {
@@ -13,25 +14,21 @@ public class LeetCode_451 {
     static String frequencySort(String s) {
         HashMap<Character,Integer> map = new HashMap<>();
 
-        for (char ch: s.toCharArray()) {
-            if (!map.containsKey(ch)) {
-                map.put(ch,1);
-            }
-            else {
-                map.put(ch,map.get(ch)+1);
+        for (char c: s.toCharArray()) {
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+
+        List<Character> list = new ArrayList<>(map.keySet());
+        list.sort((a,b) -> map.get(b)-map.get(a));
+
+        StringBuilder sb = new StringBuilder();
+        for (char ch: list) {
+            int count = map.get(ch);
+            for (int i = 0;i<count;i++) {
+                sb.append(ch);
             }
         }
 
-        StringBuilder result = new StringBuilder();
-        int maxCount = 0;
-
-        for (Map.Entry<Character,Integer> entry: map.entrySet()) {
-            char key = entry.getKey();
-            int value = entry.getValue();
-
-            if (value > maxCount) {
-
-            }
-        }
+        return sb.toString();
     }
 }
